@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --near-black: #0d1117;
+    --near-blue: #5f8afa;
+    --near-cyan: #00ffff;
+    --near-purple: #9d4edd;
+    --near-green: #00ff98;
+  }
+
+  body {
+    @apply bg-near-black text-white font-sans;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 rounded-lg border border-near-cyan text-near-cyan 
+           hover:bg-near-cyan/20 transition-all duration-300 disabled:opacity-50
+           bg-opacity-10 bg-near-cyan;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 rounded-lg border border-near-purple text-near-purple 
+           hover:bg-near-purple/20 transition-all duration-300 disabled:opacity-50
+           bg-opacity-10 bg-near-purple;
+  }
+
+  .input-primary {
+    @apply w-full px-4 py-2 bg-opacity-50 bg-near-black border border-near-blue 
+           border-opacity-20 rounded-lg focus:border-near-cyan focus:outline-none 
+           text-gray-300 transition-all duration-300;
+  }
+
+  .glass {
+    @apply bg-near-blue bg-opacity-10 backdrop-blur-lg border border-near-blue border-opacity-20;
+  }
+
+  .glass-dark {
+    @apply bg-near-black bg-opacity-80 backdrop-blur-lg border border-near-blue border-opacity-10;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  @apply w-2 h-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-near-blue bg-opacity-10 rounded;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-near-blue bg-opacity-30 rounded border-2 border-near-blue border-opacity-10;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-near-blue bg-opacity-40;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 5px var(--near-cyan), 0 0 10px var(--near-cyan); }
+  50% { box-shadow: 0 0 20px var(--near-cyan), 0 0 40px var(--near-cyan); }
+  100% { box-shadow: 0 0 5px var(--near-cyan), 0 0 10px var(--near-cyan); }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Loading States */
+.loading-dots::after {
+  content: '...';
+  animation: dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes dots {
+  0%, 20% { content: '.'; }
+  40% { content: '..'; }
+  60% { content: '...'; }
+  80%, 100% { content: ''; }
+}
+
+/* Monaco Editor Customization */
+.monaco-editor {
+  @apply pt-2;
+}
+
+.monaco-editor .margin {
+  background-color: var(--near-black) !important;
+}
+
+/* Grid Background */
+.grid-bg {
+  background-image: linear-gradient(rgba(95, 138, 250, 0.1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(95, 138, 250, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Code Generation Animation */
+.typing::after {
+  content: '|';
+  animation: typing 1s infinite;
+}
+
+@keyframes typing {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Custom Utilities */
+.text-shadow-glow {
+  text-shadow: 0 0 10px var(--near-cyan),
+               0 0 20px var(--near-cyan),
+               0 0 30px var(--near-cyan);
+}
+.glass-dark {
+  @apply bg-gray-900/50 backdrop-blur-lg border border-near-blue/20;
+}
+
+.text-near-cyan {
+  @apply text-[#00ffff];
+}
+
+.text-near-purple {
+  @apply text-[#9d4edd];
+}
+
+.text-near-green {
+  @apply text-[#00ff98];
+}
